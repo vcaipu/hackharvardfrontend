@@ -24,3 +24,20 @@ a {
     background: black;
   }
 }
+
+.horizList{
+  display: flex;
+  list-style: none;
+  padding: 0px;
+}
+
+.horizList li{
+  box-shadow: 2px 2px 5px grey;
+  border-radius: 10px;
+  width: 10vw;
+  height: 10vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
