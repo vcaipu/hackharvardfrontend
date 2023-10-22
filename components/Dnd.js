@@ -1,7 +1,6 @@
 import { Button, DoubleChevronLeftIcon, DoubleChevronRightIcon } from 'evergreen-ui';
 import { useContext, useEffect, useState } from 'react'
 import PContext from '../config/context';
-import autoscroll from '../config/autoscroll';
 
 export default function Dnd() {
   const n = 10;
@@ -10,7 +9,7 @@ export default function Dnd() {
   const [canContinue,setCanContinue] = useState(false);
   const urls = ['image1.jfif','image2.jfif','image3.jfif','image4.jfif','image5.jfif',"image6.jfif","image7.jfif","image8.jfif","image9.jfif","image10.jfif"];
   const [inBucket,setInBucket] = useState(Array.from({ length: l }, (v, i) => -1)); // all -1 at first;
-  const {setNums} = useContext(PContext);
+  const {setNums,scrollPositions,setStage} = useContext(PContext);
 
   const generateList = () => {
     var res = [];
@@ -52,7 +51,7 @@ export default function Dnd() {
         <li 
           onDrop={(e)=>handleDrop(e,i)}
           onDragOver = {(e)=>{e.preventDefault();}} 
-          style={{backgroundImage: inBucket[i]==-1?"none":`url(/images/${urls[inBucket[i]]})`}}
+          style={{backgroundImage: inBucket[i]==-1?"none":`url(/images/${urls[inBucket[i]]})`, backgroundSize: "cover", backgroundPosition: "center"}}
         >
           {inBucket[i]==-1&&<>
             <h6>Image {i + 1}</h6>
@@ -66,7 +65,7 @@ export default function Dnd() {
 
   const continueToNext = () => {
     setNums(inBucket);
-    autoscroll("sb")
+    setStage(2);
   }
 
 

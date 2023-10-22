@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
 
 :root{
-  --main-color: rgb(9, 94, 180);
+  --main-color: rgb(15, 69, 122);
 }
 
 html,
@@ -311,4 +311,90 @@ button:hover{
   height: 100px;
   border-radius: 10px;
   box-shadow: 0px 0px 5px grey;
+}
+
+.textsList{
+  padding: 0px;
+  list-style: none;
+}
+
+.textsList li {
+  padding: 5px 20px;
+  background-color: lightgrey;
+  margin: 5px;
+  border-radius: 10px;
+}
+
+.textsList li label{
+  font-weight: bold;
+  margin-right: 20px;
+}
+
+.preVideo {
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px grey;
+  margin-top: 30px;
+}
+
+.story{
+  padding: 20px;
+  /* font-weight: bold; */
+  font-size: 18px;
+}
+
+footer{
+  z-index: 7;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  background-color: var(--main-color);
+  color: white;
+  padding: 7px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+@keyframes spinnerAnimation{
+  0% {transform: rotate(45deg);}
+  50% {transform: rotate(225deg);}
+  100% {transform: rotate(405deg);}
+}
+
+.spinner{
+  display: grid;
+  width: 100px;
+  height: 100px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  animation: spinnerAnimation 2s infinite;
+}
+
+.spinner .spinDot{
+  background-color: var(--main-color);
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+  border-radius: 50%;
+}
+
+
+.imageSeq{
+  border-radius: 10px;
+  margin: 20px;
+  width: 500px;
+  height: 400px;
+  background-color: lightgrey;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: rgb(131, 131, 131)
+}
+
+.gs label{
+  font-weight: bold;
+  font-size: 25px;
+  margin: 20px;
 }

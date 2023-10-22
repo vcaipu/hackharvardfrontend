@@ -4,7 +4,7 @@ import PContext from "../config/context";
 
 export default function EegData(){
     const n = 5;
-    const {nums,setStage} = useContext(PContext);
+    const {nums,setStage,setTexts,scrollPositions} = useContext(PContext);
     const [data,setData] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
     const [loadingProgress,setLoadingProgress] = useState(0); //purely used for loading bar;
@@ -77,12 +77,13 @@ export default function EegData(){
 
     const continueFunc = () => {
         setStage(3);
+        setTexts(data.map(d=>d.desc))
     }
 
-    return <div id="eegDataContainer" style={{width: "100%"}} >
+    return <div id="eegDataContainer" style={{width: "100%", height: "100%", justifyContent: "center"}} className="fc" >
         {isLoading?<Loading progress={loadingProgress} text="Generating Images and Data"></Loading>:<ul className="fc">
-            <ul id="dataGrid">{renderData()}</ul>
-           {data.length>0&&<button className="sb" onClick={()=>continueFunc()}>Continue</button>} 
+            {nums&&nums.length>0&&<ul id="dataGrid">{renderData()}</ul>}
+           {!isLoading&&<button className="sb" onClick={()=>continueFunc()}>Continue</button>} 
         </ul>}
     </div>
 }
